@@ -18,9 +18,15 @@
 
 html, body { background: var(--bg-base) !important; color: var(--text-main); min-height: 100vh; overflow-x: hidden; -webkit-tap-highlight-color: transparent;}
 html, body {
-  overflow-x: hidden;
-  touch-action: pan-y; /* CHỈ cho vuốt dọc */
+  touch-action: pan-y;
 }
+
+.tab-container {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
 
 
 .base-bg-layer { position: fixed; inset: 0; z-index: -3; background: var(--bg-base); pointer-events: none; }
