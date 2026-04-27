@@ -369,19 +369,25 @@ body:not(.panel-active) #virtual-crosshair { display: none !important; }
 
 
 @media (max-width: 900px) {
-  .app-layout { flex-direction: column; padding: 0; gap: 0; }
+  .app-layout { 
+  flex-direction: row !important; 
+}
   
   .content-area { order: 1; margin: 10px 10px 0 10px; flex: 1; overflow-y: auto;}
   
   .sidebar-glass {
-      order: 2; 
-      flex-direction: row; width: 100%; height: auto;
-      padding: 0; margin-top: 10px;
-      align-items: center; box-shadow: 0 -5px 20px rgba(0,0,0,0.9);
-      border-right: none !important; 
-      border-top: 1px solid rgba(255,255,255,0.05) !important;
-      background: #0b0c13 !important; 
-  }
+    order: 0;
+    flex-direction: column;
+    width: 70px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+.content-area {
+    margin-left: 70px;
+}
   
   .sidebar-glass:hover { width: 100%; }
   .brand-text, .sidebar-header, .sidebar-footer { display: none; } 
