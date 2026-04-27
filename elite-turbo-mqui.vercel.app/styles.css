@@ -456,3 +456,15 @@ body:not(.panel-active) #virtual-crosshair { display: none !important; }
   .platform-grid { grid-template-columns: 1fr; }
   .system-overview { flex-direction: column; }
 }
+@media (max-width: 900px) {
+  .sidebar-glass {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+  }
+
+  .content-area {
+    padding-bottom: 80px; /* tránh bị che */
+  }
+}
