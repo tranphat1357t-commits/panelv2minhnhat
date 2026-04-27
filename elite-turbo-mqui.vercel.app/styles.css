@@ -456,26 +456,31 @@ body:not(.panel-active) #virtual-crosshair { display: none !important; }
   .platform-grid { grid-template-columns: 1fr; }
   .system-overview { flex-direction: column; }
 }
-@media (max-width: 900px) {
-  .app-layout {
-    flex-direction: row !important;
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  color: #00e5ff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
   }
 
   .sidebar-glass {
     position: fixed;
     left: 0;
     top: 0;
-    width: 70px;
-    height: 100vh;
-    flex-direction: column;
-    z-index: 9999;
+    height: 100%;
+    transform: translateX(-100%);
+    z-index: 999;
+    transition: 0.3s;
   }
 
-  .content-area {
-    margin-left: 70px;
-  }
-
-  .side-nav {
-    flex-direction: column;
+  .sidebar-glass.show {
+    transform: translateX(0);
   }
 }
