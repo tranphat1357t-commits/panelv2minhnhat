@@ -334,6 +334,15 @@
 <script src="key.js"></script>
 
 <script>
+// TẮT SWIPE CHUYỂN TAB
+document.addEventListener('touchstart', e => {
+  e.stopPropagation();
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  e.stopPropagation();
+}, { passive: true });
+
   window.themeColor = '#00e5ff';
   window.themeRGB = '0, 229, 255';
   window.currentSelectedOS = null; 
@@ -728,104 +737,7 @@ window.addEventListener('scroll', () => {
     document.getElementById('space-canvas').style.display = 'block';
   }, 200);
 });
-let touchStartY = 0;
-let touchEndY = 0;
-let isSwiping = false;
-let hasMoved = false;
 
-const tabs = Array.from(document.querySelectorAll('.side-nav .nav-item'));
-let currentTabIndex = 0;
-
-const navItems = document.querySelectorAll('.side-nav .nav-item');
-
-
-// easing mượt
-function smoothScrollTo(targetY, duration = 400) {
-  const startY = window.scrollY;
-  const diff = targetY - startY;
-  let startTime = null;
-
-  function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-  }
-
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const progress = Math.min((timestamp - startTime) / duration, 1);
-    const ease = easeOutCubic(progress);
-
-    window.scrollTo(0, startY + diff * ease);
-
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    }
-  }
-
-  requestAnimationFrame(step);
-}
-
-// chuyển tab mượt
-function switchTab(index) {
-  if (index < 0 || index >= tabs.length) return;
-
-  tabs[index].click();
-  currentTabIndex = index;
-}
-document.addEventListener('touchmove', (e) => {
-  if (!isSwiping) return;
-
-  const currentY = e.touches[0].clientY;
-  if (Math.abs(currentY - touchStartY) > 10) {
-    hasMoved = true; // ✅ chỉ khi di chuyển đủ mới tính
-  }
-}, { passive: true });
-
-// bắt đầu vuốt
-document.addEventListener('touchstart', (e) => {
-  touchStartY = e.touches[0].clientY;
-  isSwiping = true;
-}, { passive: true });
-
-// kết thúc vuốtdocument.addEventListener('touchend', (e) => {
-  if (!isSwiping || !hasMoved) return; // ❌ không di chuyển thì bỏ
-
-  touchEndY = e.changedTouches[0].clientY;
-
-  const diff = touchStartY - touchEndY;
-
-  if (Math.abs(diff) < 120) return; // tăng ngưỡng cho chắc
-
-  if (diff > 0) {
-    if (currentTabIndex < tabs.length - 1) {
-      switchTab(currentTabIndex + 1);
-    }
-  } else {
-    if (currentTabIndex > 0) {
-      switchTab(currentTabIndex - 1);
-    }
-  }
-
-  isSwiping = false;
-}, { passive: true });
-
-function handleSwipe() {
-  if (touchStartY < 100 || touchStartY > window.innerHeight - 100) return;
-  const diff = touchStartY - touchEndY;
-
-  if (Math.abs(diff) < 60) return; // tăng độ nhạy
-
-  if (diff > 0) {
-    // vuốt lên
-    if (currentTabIndex < tabs.length - 1) {
-      switchTab(currentTabIndex + 1);
-    }
-  } else {
-    // vuốt xuống
-    if (currentTabIndex > 0) {
-      switchTab(currentTabIndex - 1);
-    }
-  }
-}
 
 
 
