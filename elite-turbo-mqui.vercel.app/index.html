@@ -83,6 +83,9 @@
 
   <main class="content-area glass-card">
     <header class="top-header">
+  <div class="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
       <div class="header-title"><h2 id="current-tab-title">DASHBOARD</h2><p>Elite Performance • <span class="text-primary">CONNECTION</span></p></div>
       <div class="header-actions"><div class="status-pulse"><div class="status-dot"></div> READY</div></div>
     </header>
@@ -738,7 +741,14 @@ window.addEventListener('scroll', () => {
   }, 200);
 });
 
+const menuBtn = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar-glass');
 
+if(menuBtn){
+  menuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
+  });
+}
 
 
 
