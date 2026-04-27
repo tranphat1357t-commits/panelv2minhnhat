@@ -795,6 +795,7 @@ document.addEventListener('touchstart', (e) => {
   isSwiping = true;
 }, { passive: true });
 
+
 function handleSwipe() {
   if (touchStartY < 100 || touchStartY > window.innerHeight - 100) return;
   const diff = touchStartY - touchEndY;
