@@ -145,6 +145,11 @@
     </div>
 
     <button id="resetBtn" class="btn gray" style="margin-top:8px;">RESET</button>
+    <button id="getKeyBtn" class="btn" 
+style="margin-top:8px;
+background:linear-gradient(45deg,#00ff88,#00cc66);">
+  Get Key Free
+</button>
 
     <div class="info">
       UID: <span id="uid"></span><br>
@@ -211,7 +216,9 @@
     localStorage.removeItem("vip_key");
     location.reload();
   };
-
+document.getElementById("getKeyBtn").onclick = () => {
+  window.open("https://...", "_blank");
+};
   document.getElementById("checkBtn").onclick = async () => {
     const key = document.getElementById("keyInput").value;
     status.innerText = "Đang check...";
