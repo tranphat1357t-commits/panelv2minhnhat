@@ -148,7 +148,7 @@
     <button id="getKeyBtn" class="btn" 
 style="margin-top:8px;
 background:linear-gradient(45deg,#00ff88,#00cc66);">
-  Get Key Free
+  Get Key Free 3 Ngày
 </button>
 
     <div class="info">
